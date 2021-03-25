@@ -15,6 +15,7 @@ public class StateNewTurn : AbstractState
                             EnemySlotArrayControl enemySlotArrayControl,
                             List<ICommand> enemyCommands) : base(gameStateControl)
     {
+        this.gameStateControl = gameStateControl;
         this.playerSlotArrayControl = playerSlotArrayControl;
         this.playerCommands = playerCommands;
         this.enemySlotArrayControl = enemySlotArrayControl;

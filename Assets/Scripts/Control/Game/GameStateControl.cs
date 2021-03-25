@@ -7,11 +7,14 @@ public class GameStateControl : MonoBehaviour
     [SerializeField] PlayerSlotArrayControl playerSlotArrayControl;
     [SerializeField] EnemySlotArrayControl enemySlotArrayControl;
     [SerializeField] HealthState playerHealth;
+    [SerializeField] BarChangeAction playerHealthBarChangeAction;
     [SerializeField] HealthState enemyHealth;
+    [SerializeField] BarChangeAction enemyHealthBarChangeAction;
 
     private readonly List<ICommand> playerCommands = new List<ICommand>();
     private readonly List<ICommand> enemyCommands = new List<ICommand>();
 
+    private EnemySpawner enemySpawner;
     private LevelCounter levelCounter;
 
     public IState StateNewGame { get; private set; }
@@ -26,14 +29,16 @@ public class GameStateControl : MonoBehaviour
 
     private void Awake()
     {
+        enemySpawner = GetComponent<EnemySpawner>();
+
         levelCounter = GetComponent<LevelCounter>();
 
         StateNewGame = new StateNewGame(this /*, levelCounter*/);
-        StateNewLevel = new StateNewLevel(this, playerHealth, enemyHealth /*, levelCounter*/);
+        StateNewLevel = new StateNewLevel(this, playerHealth, playerHealthBarChangeAction, enemySpawner, enemyHealth, enemyHealthBarChangeAction /*, levelCounter*/);
         StateNewTurn = new StateNewTurn(this, playerSlotArrayControl, playerCommands, enemySlotArrayControl, enemyCommands);
         StatePlayerSelection = new StatePlayerSelection(this, playerSlotArrayControl, playerCommands);
         StateEnemySelection = new StateEnemySelection(this, enemySlotArrayControl, enemyCommands);
-        StateResolveTurn = new StateResolveTurn(this, playerHealth, enemyHealth, playerCommands, enemyCommands);
+        StateResolveTurn = new StateResolveTurn(this, playerHealth, playerHealthBarChangeAction, enemyHealth, enemyHealthBarChangeAction, playerCommands, enemyCommands);
         StateGameOver = new StateGameOver(this);
     }
 

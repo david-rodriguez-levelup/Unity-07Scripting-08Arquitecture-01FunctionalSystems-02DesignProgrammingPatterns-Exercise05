@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b242bbac7527446a80b07cf70099f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 20
 --- !u!114 &232998602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2144,6 +2144,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1106072602}
+  - component: {fileID: 1106072604}
   - component: {fileID: 1106072603}
   m_Layer: 5
   m_Name: EnemyHealthBar
@@ -2224,6 +2225,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1106072604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1106072601}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ba81f1617144542b276a9eb94e0da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxValue: 100
 --- !u!1 &1136229112
 GameObject:
   m_ObjectHideFlags: 0
@@ -2234,6 +2248,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1136229113}
   - component: {fileID: 1136229114}
+  - component: {fileID: 1136229117}
+  - component: {fileID: 1136229116}
   - component: {fileID: 1136229115}
   m_Layer: 0
   m_Name: Game
@@ -2271,7 +2287,9 @@ MonoBehaviour:
   playerSlotArrayControl: {fileID: 1002243568}
   enemySlotArrayControl: {fileID: 1042885742}
   playerHealth: {fileID: 232998603}
+  playerHealthBarChangeAction: {fileID: 1551956479}
   enemyHealth: {fileID: 1755633558}
+  enemyHealthBarChangeAction: {fileID: 1106072604}
 --- !u!114 &1136229115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2285,6 +2303,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelCounterChangeAction: {fileID: 1853450537}
+--- !u!114 &1136229116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136229112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb80e1ce0d5113f46a50373be6bc4953, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemies:
+  - {fileID: 179036183344450982, guid: f9be3753dcfb51c46a08d708066e5a60, type: 3}
+  - {fileID: 7350618777249508485, guid: 485e231de371191499162566d5cc51cf, type: 3}
+  - {fileID: 7849810042604094138, guid: 4de7ef172cdb9464cb569d7c3013fd0d, type: 3}
+  - {fileID: 833534477468169187, guid: be351bde7afd1db4eb14641bfd07c3a7, type: 3}
+  - {fileID: 7086591348900428618, guid: 6f3b41729c1dee34182de95fbd3e6710, type: 3}
+--- !u!114 &1136229117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136229112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86597984638e8e34eae5452d732bf199, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPosition: {fileID: 1149657910}
 --- !u!1 &1149657909
 GameObject:
   m_ObjectHideFlags: 0
@@ -2295,7 +2344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1149657910}
   m_Layer: 0
-  m_Name: EnemySpawnPosition
+  m_Name: SpawnPosition
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2602,6 +2651,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1551956477}
+  - component: {fileID: 1551956479}
   - component: {fileID: 1551956478}
   m_Layer: 5
   m_Name: PlayerHealthBar
@@ -2682,6 +2732,19 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1551956479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1551956476}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9ba81f1617144542b276a9eb94e0da2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxValue: 100
 --- !u!1 &1572545601
 GameObject:
   m_ObjectHideFlags: 0
@@ -3005,7 +3068,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 256f59a87348eaf4095e6b311fc9c9eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 50
+  maxHealth: 100
 --- !u!1 &1800857157
 GameObject:
   m_ObjectHideFlags: 0

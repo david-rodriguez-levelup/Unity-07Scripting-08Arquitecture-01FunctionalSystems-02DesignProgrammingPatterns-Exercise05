@@ -8,7 +8,7 @@ public class HealthState : MonoBehaviour
 {
 
     public event Action OnDeath;
-    public event Action OnChange;
+    public event Action<float> OnChange;
 
     [SerializeField] private float maxHealth;
 
@@ -24,7 +24,7 @@ public class HealthState : MonoBehaviour
     public void RestoreAll()
     {
         currentHealth = maxHealth;
-        OnChange?.Invoke();
+        OnChange?.Invoke(currentHealth);
     }
 
     public void TakeDamage(float damage)
@@ -38,7 +38,7 @@ public class HealthState : MonoBehaviour
         if (currentHealth != previousHealth)
         {
             Debug.Log($"\t{name} receives {damage} points of damage (new health is {currentHealth})!!!");
-            OnChange?.Invoke();
+            OnChange?.Invoke(currentHealth);
         }
 
         if (currentHealth <= 0f)

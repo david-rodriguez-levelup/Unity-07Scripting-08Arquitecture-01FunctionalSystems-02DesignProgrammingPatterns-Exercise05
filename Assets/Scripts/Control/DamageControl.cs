@@ -52,7 +52,7 @@ public class DamageControl : MonoBehaviour, IObserver<AttackArgs>
 
     public void OnNotify(AttackArgs parameter)
     {
-        // Cálculo del 50% si se está defendiendo!!!???      
+        // Cálculo del 50% si se está defendiendo!!!???    
         healthState.TakeDamage(parameter.Damage);
     }
 
